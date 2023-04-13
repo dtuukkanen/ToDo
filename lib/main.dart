@@ -12,9 +12,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: topBar(context),
-        body: const Center(
-          child: Text('Hello World!'),
-        ),
+        body: listView(),
       ),
     );
   }
@@ -34,5 +32,17 @@ AppBar topBar(BuildContext context) {
         },
       ),
     ],
+  );
+}
+
+// create a widget for the list of tasks
+Widget listView() {
+  return ListView.builder(
+    itemCount: 10,
+    itemBuilder: (BuildContext context, int index) {
+      return ListTile(
+        title: Text('Task $index'),
+      );
+    },
   );
 }
