@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+final now = DateTime.now();
+final String time = "${now.day.toString()}/${now.month.toString().padLeft(2,'0')}/${now.year.toString().padLeft(2,'0')} ${now.hour.toString().padLeft(2,'0')}:${now.minute.toString().padLeft(2,'0')}";
 void main() {
   runApp(const MainApp());
 }
@@ -13,14 +15,12 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         appBar: topBar(context),
         body: listView(),
-        bottomNavigationBar: bottomBar(context),
+        bottomNavigationBar: bottomNavigationBar(context),
         floatingActionButton: FloatingActionButton(
         elevation: 12,
         child: const Icon(Icons.add),
-        onPressed: () {
-          
+        onPressed: () {  
         },
-        
       ),
     )
     );
@@ -53,22 +53,31 @@ Widget listView() {
     itemCount: 10,
     itemBuilder: (BuildContext context, int index) {
       return ListTile(
-        title: Text('Task $index', textAlign: TextAlign.justify,
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(
+          color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(20)
         ),
-        leading: const Icon(Icons.circle),
-        trailing: IconButton(icon: const Icon(Icons.delete),
-        onPressed:() {
-          
-        },),
-        
-        
-        
+        title: Text('Task $index',
+        textAlign: TextAlign.justify,
+        ),
+        subtitle:  Text(time,
+        textAlign: TextAlign.justify,),
+        leading: const Icon(
+          Icons.circle,
+          size: 40,),
+        trailing: IconButton(
+          icon: const Icon(
+          Icons.delete,
+          size: 30,),
+        onPressed:() {},
+        ), 
       );
     },
   );
 }
 
-BottomNavigationBar bottomBar(BuildContext context) {
+BottomNavigationBar bottomNavigationBar(BuildContext context) {
   return BottomNavigationBar(items: const [
     BottomNavigationBarItem(
       icon: Icon(Icons.task),
