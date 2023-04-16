@@ -14,7 +14,15 @@ class MainApp extends StatelessWidget {
         appBar: topBar(context),
         body: listView(),
         bottomNavigationBar: bottomBar(context),
+        floatingActionButton: FloatingActionButton(
+        elevation: 12,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          
+        },
+        
       ),
+    )
     );
   }
 }
