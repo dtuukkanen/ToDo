@@ -13,6 +13,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         appBar: topBar(context),
         body: listView(),
+        bottomNavigationBar: bottomBar(context),
       ),
     );
   }
@@ -21,7 +22,9 @@ class MainApp extends StatelessWidget {
 AppBar topBar(BuildContext context) {
   return AppBar(
     leading: const Icon(Icons.settings),
-    title: const Text("ToDoer"),
+    title: const Text("ToDoer",
+    style: TextStyle(fontSize: 24,),),
+    centerTitle: true,
     actions: <Widget>[
       IconButton(
         icon: const Icon(Icons.account_circle),
@@ -38,11 +41,41 @@ AppBar topBar(BuildContext context) {
 // create a widget for the list of tasks
 Widget listView() {
   return ListView.builder(
+    itemExtent: 80.0,
     itemCount: 10,
     itemBuilder: (BuildContext context, int index) {
       return ListTile(
-        title: Text('Task $index'),
+        title: Text('Task $index', textAlign: TextAlign.justify,
+        ),
+        leading: const Icon(Icons.circle),
+        trailing: IconButton(icon: const Icon(Icons.delete),
+        onPressed:() {
+          
+        },),
+        
+        
+        
       );
     },
   );
 }
+
+BottomNavigationBar bottomBar(BuildContext context) {
+  return BottomNavigationBar(items: const [
+    BottomNavigationBarItem(
+      icon: Icon(Icons.task),
+      label: 'ToDoList',
+      ),
+      BottomNavigationBarItem(
+      icon: Icon(Icons.edit_calendar),
+      label: 'Calendar',
+      ),
+      BottomNavigationBarItem(
+      icon: Icon(Icons.note),
+      label: 'Notes',
+      ),
+  ],
+  );
+
+}
+
