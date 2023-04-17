@@ -12,16 +12,19 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: topBar(context),
-        body: listView(),
+        body: Container(
+          margin: const EdgeInsets.only(bottom: 80.0),
+          child: listView(),
+        ),
         bottomNavigationBar: bottomNavigationBar(context),
-        floatingActionButton: FloatingActionButton(
-        elevation: 12,
-        child: const Icon(Icons.add),
-        onPressed: () {  
-        },
-      ),
+        floatingActionButton: Row(
+          children: [
+            Expanded(child: textField()),
+            floatingActionButton(),
+        ]),
     )
     );
   }
@@ -49,6 +52,7 @@ AppBar topBar(BuildContext context) {
 // create a widget for the list of tasks
 Widget listView() {
   return ListView.builder(
+    shrinkWrap: true,
     itemExtent: 80.0,
     itemCount: 10,
     itemBuilder: (BuildContext context, int index) {
@@ -93,6 +97,27 @@ BottomNavigationBar bottomNavigationBar(BuildContext context) {
       ),
   ],
   );
-
 }
 
+FloatingActionButton floatingActionButton() {
+  return FloatingActionButton(
+    elevation: 12,
+    child: const Icon(Icons.add),
+    onPressed: () {}
+    );
+}
+
+
+Widget textField() {
+  return Container(
+    margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+    child: const TextField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        filled: true,
+        fillColor: Colors.white,
+        hintText: 'Add new task...',
+      ),
+    ),
+  );
+}
