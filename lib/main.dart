@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         appBar: topBar(context),
         body: Container(
-          margin: const EdgeInsets.only(bottom: 80.0),
+          margin: const EdgeInsets.only(bottom: 80.0, left: 5.0, right: 5.0, top: 5.0),
           child: listView(),
         ),
         bottomNavigationBar: bottomNavigationBar(context),
@@ -32,7 +32,10 @@ class MainApp extends StatelessWidget {
 
 AppBar topBar(BuildContext context) {
   return AppBar(
-    leading: const Icon(Icons.settings),
+    leading: const IconButton(
+      icon: Icon(Icons.settings),
+      onPressed: onSettingsPressed,
+      ),
     title: const Text("ToDoer",
     style: TextStyle(fontSize: 24,),),
     centerTitle: true,
@@ -110,7 +113,7 @@ FloatingActionButton floatingActionButton() {
 
 Widget textField() {
   return Container(
-    margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+    margin: const EdgeInsets.only(left: 25.0, right: 15.0),
     child: const TextField(
       decoration: InputDecoration(
         border: OutlineInputBorder(),
@@ -121,3 +124,5 @@ Widget textField() {
     ),
   );
 }
+
+void onSettingsPressed() {}
