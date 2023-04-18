@@ -20,7 +20,7 @@ class _MainAppState extends State<MainApp> {
 
   TextEditingController editingController = TextEditingController();
   //List<String> tasks = List.generate(10, (index) => 'Task $index');
-  List<String> tasks = ['Class', 'Study', 'Make food', 'Bike ride', 'Eat', 'Sleep'];
+  List<String> tasks = ['Attend class', 'Study', 'Make food', 'Walk the dog', 'Eat', 'Sleep'];
 
   Widget listView() {
   return ListView.builder(
