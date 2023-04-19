@@ -52,13 +52,13 @@ class _MainAppState extends State<MainApp> {
             leading: const Icon(
               Icons.circle,
               size: 40,
-              color: Color.fromARGB(240, 105, 240, 200),
+              color: Colors.blue,
             ),
             trailing: IconButton(
               icon: const Icon(
                 Icons.delete,
                 size: 30,
-                color: Color.fromARGB(240, 105, 240, 200),
+                color: Colors.blue,
               ),
               onPressed: () {
                 setState(() {
@@ -74,6 +74,7 @@ class _MainAppState extends State<MainApp> {
 
   Widget floatingActionButton() {
     return FloatingActionButton(
+        backgroundColor: Colors.blue,
         elevation: 12,
         child: const Icon(Icons.add),
         onPressed: () {
@@ -161,6 +162,7 @@ class _MainAppState extends State<MainApp> {
 
   BottomNavigationBar bottomNavigationBar(BuildContext context) {
     return BottomNavigationBar(
+      selectedItemColor: Colors.blue,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.task),
