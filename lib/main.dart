@@ -52,7 +52,7 @@ class _MainAppState extends State<MainApp> {
             leading: const Icon(
               Icons.circle,
               size: 40,
-              color: Color.fromARGB(239, 105, 240, 200),
+              color: Color.fromARGB(240, 105, 240, 200),
             ),
             trailing: IconButton(
               icon: const Icon(
