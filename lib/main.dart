@@ -39,7 +39,7 @@ class _MainAppState extends State<MainApp> {
           padding: const EdgeInsets.all(4.0),
           child: ListTile(
             shape: RoundedRectangleBorder(
-                side: const BorderSide(color: Colors.black, width: 1),
+                side: const BorderSide(color: Colors.grey, width: 1),
                 borderRadius: BorderRadius.circular(20)),
             title: Text(
               tasks[index],
@@ -52,11 +52,13 @@ class _MainAppState extends State<MainApp> {
             leading: const Icon(
               Icons.circle,
               size: 40,
+              color: Color.fromARGB(239, 105, 240, 200),
             ),
             trailing: IconButton(
               icon: const Icon(
                 Icons.delete,
                 size: 30,
+                color: Color.fromARGB(240, 105, 240, 200),
               ),
               onPressed: () {
                 setState(() {
@@ -110,7 +112,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        //theme:
+        theme: ThemeData.dark(),
         home: Scaffold(
             appBar: topBar(context),
             body: Container(
@@ -191,7 +193,7 @@ class _MainAppState extends State<MainApp> {
                   color: Colors.black,
                 ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.grey,
                 contentPadding: EdgeInsets.all(8.0),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
@@ -207,10 +209,10 @@ class _MainAppState extends State<MainApp> {
           const SizedBox(
             width: 10.0,
           ),
-          const Text("Alphabetical"),
+          const Text("Date"),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: const Color.fromARGB(0, 0, 0, 0),
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: PopupMenuButton(
