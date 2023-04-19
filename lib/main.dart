@@ -115,10 +115,11 @@ class _MainAppState extends State<MainApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
         home: Scaffold(
+          extendBody: true,
             appBar: topBar(context),
             body: Container(
                 margin: const EdgeInsets.only(
-                    bottom: 80.0, left: 5.0, right: 5.0, top: 5.0),
+                    bottom: 60.0, left: 5.0, right: 5.0, top: 5.0),
                 child: Column(
                   children: <Widget>[
                     searchAndSortBar(),
@@ -131,7 +132,11 @@ class _MainAppState extends State<MainApp> {
                   ],
                 )),
             bottomNavigationBar: bottomNavigationBar(context),
-            floatingActionButton: floatingActionButton()));
+            floatingActionButton: Align(
+              alignment: const Alignment(1, 1.03),
+              child: floatingActionButton(),)
+            )
+            );
   }
 
   AppBar topBar(BuildContext context) {
@@ -162,6 +167,7 @@ class _MainAppState extends State<MainApp> {
 
   BottomNavigationBar bottomNavigationBar(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: const Color.fromARGB(255, 71, 71, 71),
       selectedItemColor: Colors.blue,
       items: const [
         BottomNavigationBarItem(
@@ -182,7 +188,7 @@ class _MainAppState extends State<MainApp> {
 
   Widget searchAndSortBar() {
     return Container(
-      margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+      margin: const EdgeInsets.only(left: 10.0, right: 10.0, top: 5),
       child: Row(
         children: <Widget>[
           const Expanded(
