@@ -206,7 +206,7 @@ class _MainAppState extends State<MainApp> {
           const SizedBox(
             width: 10.0,
           ),
-          const Text("Sort by: "),
+          const Text("Alphabetical"),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
