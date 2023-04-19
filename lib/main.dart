@@ -110,6 +110,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        //theme:
         home: Scaffold(
             appBar: topBar(context),
             body: Container(
@@ -233,3 +234,5 @@ class _MainAppState extends State<MainApp> {
 }
 
 void onSettingsPressed() {}
+
+//dark mode
