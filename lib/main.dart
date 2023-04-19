@@ -113,10 +113,19 @@ class _MainAppState extends State<MainApp> {
         home: Scaffold(
             appBar: topBar(context),
             body: Container(
-              margin: const EdgeInsets.only(
-                  bottom: 80.0, left: 5.0, right: 5.0, top: 5.0),
-              child: listView(),
-            ),
+                margin: const EdgeInsets.only(
+                    bottom: 80.0, left: 5.0, right: 5.0, top: 5.0),
+                child: Column(
+                  children: <Widget>[
+                    searchAndSortBar(),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Expanded(
+                      child: listView(),
+                    ),
+                  ],
+                )),
             bottomNavigationBar: bottomNavigationBar(context),
             floatingActionButton: floatingActionButton()));
   }
@@ -163,6 +172,61 @@ class _MainAppState extends State<MainApp> {
           label: 'Notes',
         ),
       ],
+    );
+  }
+
+  Widget searchAndSortBar() {
+    return Container(
+      margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+      child: Row(
+        children: <Widget>[
+          const Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                hintStyle: TextStyle(color: Colors.black),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.all(8.0),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 10.0,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: PopupMenuButton(
+              icon: const Icon(Icons.sort),
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                  value: 1,
+                  child: Text('Sort by date'),
+                ),
+                const PopupMenuItem(
+                  value: 2,
+                  child: Text('Sort by priority'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
