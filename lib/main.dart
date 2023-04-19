@@ -28,30 +28,33 @@ class _MainAppState extends State<MainApp> {
     itemExtent: 80.0,
     itemCount: tasks.length,
     itemBuilder: (BuildContext context, int index) {
-      return ListTile(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-          color: Colors.black, width: 1),
-          borderRadius: BorderRadius.circular(20)
+      return Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: ListTile(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(
+            color: Colors.black, width: 1),
+            borderRadius: BorderRadius.circular(20)
+          ),
+          title: Text(tasks[index],
+          textAlign: TextAlign.justify,
+          ),
+          subtitle:  Text(time,
+          textAlign: TextAlign.justify,),
+          leading: const Icon(
+            Icons.circle,
+            size: 40,),
+          trailing: IconButton(
+            icon: const Icon(
+            Icons.delete,
+            size: 30,),
+          onPressed:() {
+            setState(() {
+              tasks.removeAt(index);
+            });
+          },
+          ), 
         ),
-        title: Text(tasks[index],
-        textAlign: TextAlign.justify,
-        ),
-        subtitle:  Text(time,
-        textAlign: TextAlign.justify,),
-        leading: const Icon(
-          Icons.circle,
-          size: 40,),
-        trailing: IconButton(
-          icon: const Icon(
-          Icons.delete,
-          size: 30,),
-        onPressed:() {
-          setState(() {
-            tasks.removeAt(index);
-          });
-        },
-        ), 
       );
     },
   );
