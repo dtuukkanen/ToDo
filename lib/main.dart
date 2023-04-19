@@ -206,6 +206,7 @@ class _MainAppState extends State<MainApp> {
           const SizedBox(
             width: 10.0,
           ),
+          const Text("Sort by: "),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -216,11 +217,11 @@ class _MainAppState extends State<MainApp> {
               itemBuilder: (context) => [
                 const PopupMenuItem(
                   value: 1,
-                  child: Text('Sort by date'),
+                  child: Text('Date'),
                 ),
                 const PopupMenuItem(
                   value: 2,
-                  child: Text('Sort by priority'),
+                  child: Text('Name'),
                 ),
               ],
             ),
