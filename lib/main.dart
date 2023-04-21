@@ -49,22 +49,54 @@ class _MainAppState extends State<MainApp> {
               time,
               textAlign: TextAlign.justify,
             ),
-            leading: const Icon(
-              Icons.circle,
-              size: 40,
-              color: Colors.blue,
-            ),
-            trailing: IconButton(
-              icon: const Icon(
-                Icons.delete,
-                size: 30,
-                color: Colors.blue,
-              ),
+            leading: IconButton(icon: const Icon(
+              Icons.edit,
+              size: 30,
+              color: Colors.blue,),
               onPressed: () {
+                showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: const Text('Edit task'),
+                  content: TextField(
+                    controller: editingController,
+                    decoration: const InputDecoration(
+                        hintText: 'Write new task here...'),
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Cancel')),
+                    TextButton(
+                        onPressed: () {
+                          setState(() {
+                            tasks[index] = editingController.text;
+                            editingController.clear();
+                          });
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Edit'))
+                  ],
+                );
+              });
+              },
+            ),
+            trailing: InkWell(
+              onTap: () {
                 setState(() {
                   tasks.removeAt(index);
                 });
               },
+              child: Ink(
+                child: const Icon(
+                Icons.delete,
+                size: 30,
+                color: Colors.blue,
+              ),
+              ) 
             ),
           ),
         );
