@@ -62,7 +62,7 @@ class _MainAppState extends State<MainApp> {
                   content: TextField(
                     controller: editingController,
                     decoration: const InputDecoration(
-                        hintText: 'Write new task here...'),
+                        hintText: 'Edit task here...'),
                   ),
                   actions: <Widget>[
                     TextButton(
@@ -87,7 +87,28 @@ class _MainAppState extends State<MainApp> {
             trailing: InkWell(
               onTap: () {
                 setState(() {
-                  tasks.removeAt(index);
+                  showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title:  Text('Are you sure you want to delete "${tasks[index]}" task?'),
+                  actions: <Widget>[
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Cancel')),
+                    TextButton(
+                        onPressed: () {
+                          setState(() {
+                            tasks.removeAt(index);
+                          });
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Delete'))
+                  ],
+                );
+              });
                 });
               },
               child: Ink(
